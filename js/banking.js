@@ -6,6 +6,15 @@ function getInputValue(inputId) {
     //clear deposit input field
     inputFeild.value = '';
     return amountValue;
+};
+
+function updateTotalAmount(depositAmount) {
+    const depositTotal = document.getElementById('deposit-total');
+    const previousDepositText = depositTotal.innerText;//$00 catch
+    const previousDepositAmount = parseFloat(previousDepositText); 
+    const newDepositTotal = previousDepositAmount + depositAmount; 
+
+    depositTotal.innerText = newDepositTotal;
 }
 
 //handel deposit button event
@@ -15,16 +24,16 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     const depositAmount = getInputValue('deposit-input');
     // console.log(newDepositAmount);
 
-    const depositTotal = document.getElementById('deposit-total');
 
+    // updaey total amount 
+    updateTotalAmount(depositAmount);
+
+    /* const depositTotal = document.getElementById('deposit-total');
     const previousDepositText = depositTotal.innerText;//$00 catch
     const previousDepositAmount = parseFloat(previousDepositText); 
-
     const newDepositTotal = previousDepositAmount + depositAmount; 
-    
-    console.log(previousDepositAmount, newDepositTotal);
 
-    depositTotal.innerText = newDepositTotal;
+    depositTotal.innerText = newDepositTotal; */
     
 
     //update account balance
@@ -33,7 +42,7 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     const previousBalanceTotal = parseFloat(balanceTotalText);
     const newBalanceTotal = previousBalanceTotal + depositAmount;
     balanceTotal.innerText = newBalanceTotal;
-    console.log(previousBalanceTotal, newDepositTotal);
+    
 
     
 
