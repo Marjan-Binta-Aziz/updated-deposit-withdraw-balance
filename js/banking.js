@@ -8,7 +8,7 @@ function getInputValue(inputId) {
     return amountValue;
 };
 
-function updateTotalAmount(totalFeild, depositAmount) {
+function updateTotalField(totalFeild, depositAmount) {
     const totalElement = document.getElementById(totalFeild);
     const totalText = totalElement.innerText;//$00 catch
     const previousTotal = parseFloat(totalText); 
@@ -26,7 +26,7 @@ document.getElementById('deposit-button').addEventListener('click', function () 
 
 
     // updaey total amount 
-    updateTotalAmount('deposit-total', depositAmount);
+    updateTotalField('deposit-total', depositAmount);
 
     //update account balance
     const balanceTotal = document.getElementById('balance-total');
@@ -36,27 +36,18 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     balanceTotal.innerText = newBalanceTotal;
     
 
-    
-
 });
 
 // Handle withdraw event handler 
 
 document.getElementById('withdraw-button').addEventListener('click', function () {
-    
+    //get withdraw amount input 
     const newWithdrawAmount = getInputValue('withdraw-input');
 
+    //get+set total amount of withdraw
+    updateTotalField('withdraw-total', newWithdrawAmount)
 
 
-    //set withdraw total
-    const withdrawTotal = document.getElementById('withdraw-total'); // catch $00
-    const previousTotalWithdrawText = withdrawTotal.innerText; //ata h tag er maje ase tai .innerText hobe
-
-    const previousWithdrawTotal = parseFloat(previousTotalWithdrawText); // convert string to flot
-
-    const newWithdrawTotalAmount = previousWithdrawTotal + newWithdrawAmount;
-    
-    withdrawTotal.innerText = newWithdrawTotalAmount;
 
 
 // blanace update after witdraw
