@@ -1,21 +1,18 @@
-function getInputValue() {
+function getInputValue(inputId) {
     //get the amount of Enter value 
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmountText = depositInput.value;
-    const depositAmount = parseFloat(depositAmountText);
+    const inputFeild = document.getElementById(inputId);
+    const inpuutAmountText = inputFeild.value;
+    const amountValue = parseFloat(inpuutAmountText);
     //clear deposit input field
-    depositInput.value = '';
-
-    return depositAmount;
+    inputFeild.value = '';
+    return amountValue;
 }
 
 //handel deposit button event
 document.getElementById('deposit-button').addEventListener('click', function () {
     //get the amount of Enter value 
-    /* const depositInput = document.getElementById('deposit-input');
-    const newDepositAmountText = depositInput.value;
-    const newDepositAmount = parseFloat(newDepositAmountText); */
-    const depositAmount = getInputValue();
+
+    const depositAmount = getInputValue('deposit-input');
     // console.log(newDepositAmount);
 
     const depositTotal = document.getElementById('deposit-total');
@@ -46,10 +43,7 @@ document.getElementById('deposit-button').addEventListener('click', function () 
 
 document.getElementById('withdraw-button').addEventListener('click', function () {
     
-    const withdrawInput = document.getElementById('withdraw-input');
-    const withdrawAmountText = withdrawInput.value; //text field tai .value hobe 
-    const newWithdrawAmount = parseFloat(withdrawAmountText);  //newWithdrawAmount e holo amra je input ta dibo ota jeno flot hisebe convert kore nabe
-    console.log(newWithdrawAmount);
+    const newWithdrawAmount = getInputValue('withdraw-input');
 
     //set withdraw total
     const withdrawTotal = document.getElementById('withdraw-total'); // catch $00
@@ -61,8 +55,6 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     
     withdrawTotal.innerText = newWithdrawTotalAmount;
 
-    //clear withdraw
-    withdrawInput.value = '';
 
 // blanace update after witdraw
     const balanceTotal = document.getElementById('balance-total');
@@ -73,8 +65,6 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     balanceTotal.innerText = newBalanceTotal;
     console.log(previousBalanceTotal, newWithdrawAmount);
 
-    //clear 
-    withdrawInput.value = "";
 
 
 });
